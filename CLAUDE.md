@@ -8,11 +8,11 @@ not the migration itself. Built as a course capstone, documented publicly on
 LinkedIn and GitHub.
 
 ## Core finding (do NOT change these results)
-- All 4 models pass correctness ~100% (Qwen 89%, one compile failure). Correctness is table stakes.
+- Correctness is table stakes, and it separates the field: Claude/gpt-5-mini/Gemini pass 100%, but Qwen drops to 67% (failed all 3 hard order_filter trials, passed every easy/medium one).
 - The benchmark (artificialanalysis SciCode) predicted Claude > gpt-5-mini > Gemini > Qwen.
 - Reality fractured: idiom quality, speed, and cost do NOT track the benchmark.
-- gpt-5-mini (benchmark rank 2) is worst value: 682 avg output tokens from hidden reasoning overhead.
-- The decision matrix flips winner by business weights: quality-first -> Claude, volume-first -> Qwen.
+- gpt-5-mini (benchmark rank 2) is worst value: 734 avg output tokens from hidden reasoning overhead, and by far the slowest (8.31s).
+- The decision matrix flips winner by business weights: quality-first -> Claude, cost/speed-first -> Gemini (100% reliable, fastest at 1.33s, cheapest of the reliable models). Qwen is cheaper still but too inconsistent to recommend.
 - Thesis: model selection is a business decision, not a leaderboard lookup.
 
 ## How the harness works
