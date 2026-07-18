@@ -63,21 +63,26 @@ values. A Gradio UI exposes the weights as live sliders.
 
 | Model | Pass rate | Idiom (1–5) | Avg sec | Avg cost | Avg output tokens | Benchmark | Predicted rank |
 |---|--:|--:|--:|--:|--:|--:|--:|
-| **claude-sonnet-4-5** | 1.00 | **4.89** | 3.85 | $0.0021 | 85 | 45 | 1 |
-| gpt-5-mini | 1.00 | 4.78 | 11.73 | $0.0014 | **682** | 39 | 2 |
-| gemini-2.5-flash | 1.00 | 4.33 | 10.30 | **$0.0003** | 79 | 39 | 3 |
-| qwen3-coder | 0.89 | 4.78 | **1.69** | **$0.0001** | 83 | 36 | 4 |
+| **claude-sonnet-4-5** | 1.00 | **4.67** | 2.03 | $0.0021 | 85 | 45 | 1 |
+| gpt-5-mini | 1.00 | 4.56 | 8.31 | $0.0015 | **734** | 39 | 2 |
+| gemini-2.5-flash | 1.00 | 4.22 | **1.33** | $0.0003 | 76 | 39 | 3 |
+| qwen3-coder | 0.67 | 4.11 | 1.50 | **$0.0001** | 87 | 36 | 4 |
 
 **What the data says:**
 
-- **Correctness is table stakes.** All four pass ~100% (Qwen 89%, one compile
-  failure). Correctness alone does not separate them.
+- **Correctness is table stakes — and Qwen misses it.** Three models pass 100%,
+  but **Qwen drops to 67%, failing all three `order_filter` (hard) trials** while
+  passing every easy/medium one. Reliability breaks down exactly where the task
+  gets harder.
 - **The benchmark did not predict real-world value.** Idiom quality, speed, and
   cost do *not* track the SciCode ranking.
-- **gpt-5-mini (benchmark rank 2) is the worst value:** ~682 avg output tokens
-  from hidden reasoning overhead — slow and comparatively expensive for this task.
-- **The winner flips with business priorities:** quality-first → **Claude**;
-  volume/cost-first → **Qwen** (fastest and cheapest, at a small correctness cost).
+- **gpt-5-mini (benchmark rank 2) is the worst value:** ~734 avg output tokens
+  from hidden reasoning overhead — by far the slowest (8.31s) and comparatively
+  expensive for this task.
+- **The winner flips with business priorities:** quality-first → **Claude**
+  (top idiom, 100% correct); cost/speed-first → **Gemini** (100% reliable, fastest
+  at 1.33s, and cheapest of the fully-reliable models). **Qwen is cheaper still
+  ($0.0001) but too inconsistent to recommend** — it failed every hard conversion.
 
 **Conclusion: model selection is a business decision, not a leaderboard lookup.**
 
