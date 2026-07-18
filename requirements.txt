@@ -1,0 +1,17 @@
+# Python dependencies for the Java→Kotlin LLM eval notebook.
+# Pinned to the versions the eval was run and verified with.
+#
+# External (non-pip) requirement: the Kotlin compiler `kotlinc` must be on PATH
+#   (e.g. `brew install kotlin`). The harness shells out to it to compile and
+#   run generated Kotlin. Python's standard library covers the rest
+#   (os, subprocess, tempfile, time, json, sys).
+
+openai==2.46.0
+python-dotenv==1.2.1
+pandas==2.3.3
+
+# Interactive decision-matrix UI (Section 12). gradio_client and huggingface-hub
+# are pinned to the versions compatible with this gradio release.
+gradio==4.44.1
+gradio_client==1.3.0
+huggingface-hub==0.25.2

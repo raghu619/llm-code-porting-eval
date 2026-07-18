@@ -1,0 +1,408 @@
+model,snippet,difficulty,trial,compiled,passed,gen_seconds,input_tokens,output_tokens,kotlin,error,cost_usd,idiom_score,idiom_reason
+claude-sonnet-4-5,calculator,easy,1,True,True,1.85,181,49,"class Calculator {
+    fun add(a: Int, b: Int): Int = a + b
+    fun multiply(a: Int, b: Int): Int = a * b
+}",,0.001278,5,Fully idiomatic with expression bodies and concise function definitions.
+claude-sonnet-4-5,calculator,easy,2,True,True,1.28,181,49,"class Calculator {
+    fun add(a: Int, b: Int): Int = a + b
+    fun multiply(a: Int, b: Int): Int = a * b
+}",,0.001278,5,"Fully idiomatic with expression bodies, concise syntax, and proper use of val-style immutability in parameters."
+claude-sonnet-4-5,calculator,easy,3,True,True,1.5,181,51,"class Calculator {
+    fun add(a: Int, b: Int): Int = a + b
+    fun multiply(a: Int, b: Int): Int = a * b
+}",,0.0013080000000000001,5,"Fully idiomatic with expression bodies, concise syntax, and no Java-style patterns."
+claude-sonnet-4-5,user_lookup,medium,1,True,True,2.47,305,107,"class UserRegistry {
+    private val users = mutableMapOf<Int, String>()
+
+    fun addUser(id: Int, name: String) {
+        users[id] = name
+    }
+
+    fun getName(id: Int): String? {
+        return users[id]
+    }
+
+    fun getNameOrDefault(id: Int): String {
+        return users[id] ?: ""Unknown""
+    }
+}",,0.00252,4,"Good use of null safety, val, and Elvis operator, but could use expression bodies for single-line functions."
+claude-sonnet-4-5,user_lookup,medium,2,True,True,1.77,305,107,"class UserRegistry {
+    private val users = mutableMapOf<Int, String>()
+
+    fun addUser(id: Int, name: String) {
+        users[id] = name
+    }
+
+    fun getName(id: Int): String? {
+        return users[id]
+    }
+
+    fun getNameOrDefault(id: Int): String {
+        return users[id] ?: ""Unknown""
+    }
+}",,0.00252,4,"Uses null safety (?, ?:), val, and map indexing idiomatically, but could use getOrDefault or getOrElse for more concise API usage."
+claude-sonnet-4-5,user_lookup,medium,3,True,True,1.81,305,107,"class UserRegistry {
+    private val users = mutableMapOf<Int, String>()
+
+    fun addUser(id: Int, name: String) {
+        users[id] = name
+    }
+
+    fun getName(id: Int): String? {
+        return users[id]
+    }
+
+    fun getNameOrDefault(id: Int): String {
+        return users[id] ?: ""Unknown""
+    }
+}",,0.00252,4,"Uses nullable return type, elvis operator, and mutable map idiomatically, but could use expression-body functions for brevity."
+claude-sonnet-4-5,order_filter,hard,1,True,True,2.86,365,99,"class OrderBook {
+    data class Order(
+        val item: String,
+        val quantity: Int,
+        val price: Double
+    )
+
+    fun totalValueAbove(orders: List<Order>, minQuantity: Int): Double {
+        return orders
+            .filter { it.quantity > minQuantity }
+            .sumOf { it.price * it.quantity }
+    }
+}",,0.00258,5,"Fully idiomatic with data class, val properties, functional collection operations, and expression body."
+claude-sonnet-4-5,order_filter,hard,2,True,True,1.99,365,99,"class OrderBook {
+    data class Order(
+        val item: String,
+        val quantity: Int,
+        val price: Double
+    )
+
+    fun totalValueAbove(orders: List<Order>, minQuantity: Int): Double {
+        return orders
+            .filter { it.quantity > minQuantity }
+            .sumOf { it.price * it.quantity }
+    }
+}",,0.00258,5,"Fully idiomatic with data class, val properties, functional collection operations, and expression body."
+claude-sonnet-4-5,order_filter,hard,3,True,True,2.74,365,99,"class OrderBook {
+    data class Order(
+        val item: String,
+        val quantity: Int,
+        val price: Double
+    )
+
+    fun totalValueAbove(orders: List<Order>, minQuantity: Int): Double {
+        return orders
+            .filter { it.quantity > minQuantity }
+            .sumOf { it.price * it.quantity }
+    }
+}",,0.00258,5,"Fully idiomatic with data class, expression body, and functional collection operations."
+gpt-5-mini,calculator,easy,1,True,True,6.87,161,499,"public class Calculator {
+    public fun add(a: Int, b: Int): Int = a + b
+    public fun multiply(a: Int, b: Int): Int = a * b
+}",,0.00103825,4,"Uses expression bodies well, but retains unnecessary 'public' modifiers which are default in Kotlin."
+gpt-5-mini,calculator,easy,2,True,True,3.83,161,306,"public class Calculator {
+    public fun add(a: Int, b: Int): Int = a + b
+    public fun multiply(a: Int, b: Int): Int = a * b
+}",,0.00065225,4,"Uses expression bodies idiomatically, but 'public' is redundant in Kotlin (default visibility)."
+gpt-5-mini,calculator,easy,3,True,True,1.8,161,111,"class Calculator {
+    fun add(a: Int, b: Int): Int = a + b
+    fun multiply(a: Int, b: Int): Int = a * b
+}",,0.00026225,5,Fully idiomatic with expression bodies and proper Kotlin syntax.
+gpt-5-mini,user_lookup,medium,1,True,True,6.1,259,685,"class UserRegistry {
+    private val users: MutableMap<Int, String> = HashMap()
+
+    fun addUser(id: Int, name: String) {
+        users[id] = name
+    }
+
+    // Returns null if the user is not found.
+    fun getName(id: Int): String? = users[id]
+
+    // Returns the name, or ""Unknown"" if not found.
+    fun getNameOrDefault(id: Int): String = users[id] ?: ""Unknown""
+}",,0.0014347499999999998,4,"Good Kotlin idiom with null safety and expression bodies, but uses HashMap() instead of mutableMapOf()."
+gpt-5-mini,user_lookup,medium,2,True,True,5.35,259,629,"class UserRegistry {
+    private val users: MutableMap<Int, String> = HashMap()
+
+    fun addUser(id: Int, name: String) {
+        users[id] = name
+    }
+
+    // Returns null if the user is not found.
+    fun getName(id: Int): String? {
+        return users[id]
+    }
+
+    // Returns the name, or ""Unknown"" if not found.
+    fun getNameOrDefault(id: Int): String {
+        return users[id] ?: ""Unknown""
+    }
+}",,0.00132275,4,"Uses null safety, Elvis operator, and mutableMapOf idiom would be preferred over HashMap(), but otherwise idiomatic."
+gpt-5-mini,user_lookup,medium,3,True,True,6.04,259,685,"class UserRegistry {
+    private val users: MutableMap<Int, String> = HashMap()
+
+    fun addUser(id: Int, name: String) {
+        users[id] = name
+    }
+
+    // Returns null if the user is not found.
+    fun getName(id: Int): String? = users[id]
+
+    // Returns the name, or ""Unknown"" if not found.
+    fun getNameOrDefault(id: Int): String = users[id] ?: ""Unknown""
+}",,0.0014347499999999998,5,"Fully idiomatic with null-safe operators, expression bodies, val, and proper nullable return types."
+gpt-5-mini,order_filter,hard,1,True,True,9.83,308,974,"class OrderBook {
+    data class Order(val item: String, val quantity: Int, val price: Double)
+
+    fun totalValueAbove(orders: List<Order>, minQuantity: Int): Double {
+        return orders.sumOf { if (it.quantity > minQuantity) it.price * it.quantity else 0.0 }
+    }
+}",,0.002025,5,"Fully idiomatic with data class, expression body, sumOf, and functional filtering via inline condition."
+gpt-5-mini,order_filter,hard,2,True,True,19.09,308,1232,"class OrderBook {
+    data class Order(val item: String, val quantity: Int, val price: Double)
+
+    fun totalValueAbove(orders: List<Order>, minQuantity: Int): Double {
+        return orders.asSequence()
+            .filter { it.quantity > minQuantity }
+            .sumOf { it.price * it.quantity }
+    }
+}",,0.002541,5,"Uses data class, expression body, functional operations with asSequence/filter/sumOf, and immutable val properties throughout."
+gpt-5-mini,order_filter,hard,3,True,True,15.89,308,1485,"class OrderBook {
+    data class Order(val item: String, val quantity: Int, val price: Double)
+
+    fun totalValueAbove(orders: List<Order>, minQuantity: Int): Double =
+        orders.asSequence()
+            .filter { it.quantity > minQuantity }
+            .sumOf { it.price * it.quantity }
+}",,0.003047,5,"Fully idiomatic with data class, expression body, functional sequence operations, and val parameters."
+google/gemini-2.5-flash,calculator,easy,1,True,True,1.24,164,41,"class Calculator {
+    fun add(a: Int, b: Int): Int = a + b
+    fun multiply(a: Int, b: Int): Int = a * b
+}",,0.0001517,5,Fully idiomatic with expression bodies and concise function definitions.
+google/gemini-2.5-flash,calculator,easy,2,True,True,0.89,164,53,"class Calculator {
+    fun add(a: Int, b: Int): Int {
+        return a + b
+    }
+
+    fun multiply(a: Int, b: Int): Int {
+        return a * b
+    }
+}",,0.0001817,3,Uses class structure but misses expression body syntax for simple single-expression functions.
+google/gemini-2.5-flash,calculator,easy,3,True,True,0.85,164,53,"class Calculator {
+    fun add(a: Int, b: Int): Int {
+        return a + b
+    }
+
+    fun multiply(a: Int, b: Int): Int {
+        return a * b
+    }
+}",,0.0001817,3,Uses single-expression functions that should have expression bodies (= a + b) instead of return statements with braces.
+google/gemini-2.5-flash,user_lookup,medium,1,True,True,1.82,285,95,"class UserRegistry {
+    private val users: MutableMap<Int, String> = HashMap()
+
+    fun addUser(id: Int, name: String) {
+        users[id] = name
+    }
+
+    fun getName(id: Int): String? {
+        return users[id]
+    }
+
+    fun getNameOrDefault(id: Int): String {
+        return users[id] ?: ""Unknown""
+    }
+}",,0.00032300000000000004,4,"Uses null safety (?:), val, and idiomatic map access, but could use mutableMapOf() instead of HashMap()."
+google/gemini-2.5-flash,user_lookup,medium,2,True,True,1.15,285,97,"class UserRegistry {
+    private val users: MutableMap<Int, String> = mutableMapOf()
+
+    fun addUser(id: Int, name: String) {
+        users[id] = name
+    }
+
+    fun getName(id: Int): String? {
+        return users[id]
+    }
+
+    fun getNameOrDefault(id: Int): String {
+        return users[id] ?: ""Unknown""
+    }
+}",,0.00032799999999999995,4,"Good use of null safety, val, and elvis operator, but could use a data class for User instead of Map<Int,String>."
+google/gemini-2.5-flash,user_lookup,medium,3,True,True,1.07,285,97,"class UserRegistry {
+    private val users: MutableMap<Int, String> = mutableMapOf()
+
+    fun addUser(id: Int, name: String) {
+        users[id] = name
+    }
+
+    fun getName(id: Int): String? {
+        return users[id]
+    }
+
+    fun getNameOrDefault(id: Int): String {
+        return users[id] ?: ""Unknown""
+    }
+}",,0.00032799999999999995,4,"Good use of null safety, val, and Elvis operator, but could use a data class or typealias for user representation and expression bodies for getters."
+google/gemini-2.5-flash,order_filter,hard,1,True,True,1.94,340,80,"class OrderBook {
+    data class Order(val item: String, val quantity: Int, val price: Double)
+
+    fun totalValueAbove(orders: List<Order>, minQuantity: Int): Double {
+        return orders
+            .filter { it.quantity > minQuantity }
+            .sumOf { it.price * it.quantity }
+    }
+}",,0.000302,5,"Fully idiomatic with data class, expression body, functional collection operations, and no Java patterns."
+google/gemini-2.5-flash,order_filter,hard,2,True,True,2.07,340,80,"class OrderBook {
+    data class Order(val item: String, val quantity: Int, val price: Double)
+
+    fun totalValueAbove(orders: List<Order>, minQuantity: Int): Double {
+        return orders
+            .filter { it.quantity > minQuantity }
+            .sumOf { it.price * it.quantity }
+    }
+}",,0.000302,5,"Fully idiomatic with data class, functional collection operations, and expression body."
+google/gemini-2.5-flash,order_filter,hard,3,True,True,0.98,340,88,"class OrderBook {
+    data class Order(
+        val item: String,
+        val quantity: Int,
+        val price: Double
+    )
+
+    fun totalValueAbove(orders: List<Order>, minQuantity: Int): Double {
+        return orders
+            .filter { it.quantity > minQuantity }
+            .sumOf { it.price * it.quantity }
+    }
+}",,0.00032199999999999997,5,"Fully idiomatic with data class, expression body, and functional collection operations."
+qwen/qwen3-coder,calculator,easy,1,True,True,1.64,164,38,"class Calculator {
+    fun add(a: Int, b: Int): Int = a + b
+    fun multiply(a: Int, b: Int): Int = a * b
+}",,6.32e-05,5,"Fully idiomatic with expression body functions, concise syntax, and proper Kotlin style."
+qwen/qwen3-coder,calculator,easy,2,True,True,1.9,164,38,"class Calculator {
+    fun add(a: Int, b: Int): Int = a + b
+    fun multiply(a: Int, b: Int): Int = a * b
+}",,6.32e-05,5,Fully idiomatic with expression bodies and concise function syntax.
+qwen/qwen3-coder,calculator,easy,3,True,True,1.23,164,38,"class Calculator {
+    fun add(a: Int, b: Int): Int = a + b
+    fun multiply(a: Int, b: Int): Int = a * b
+}",,6.32e-05,5,"Fully idiomatic with expression bodies and concise syntax, though trivial example doesn't showcase advanced features."
+qwen/qwen3-coder,user_lookup,medium,1,True,True,1.89,256,106,"class UserRegistry {
+    private val users = mutableMapOf<Int, String>()
+
+    fun addUser(id: Int, name: String) {
+        users[id] = name
+    }
+
+    // Returns null if the user is not found.
+    fun getName(id: Int): String? {
+        return users[id]
+    }
+
+    // Returns the name, or ""Unknown"" if not found.
+    fun getNameOrDefault(id: Int): String {
+        return users[id] ?: ""Unknown""
+    }
+}",,0.000136,5,"Fully idiomatic with mutable map, null safety (?, ?:), expression bodies, and proper Kotlin Map API usage."
+qwen/qwen3-coder,user_lookup,medium,2,True,True,1.9,256,106,"class UserRegistry {
+    private val users = mutableMapOf<Int, String>()
+
+    fun addUser(id: Int, name: String) {
+        users[id] = name
+    }
+
+    // Returns null if the user is not found.
+    fun getName(id: Int): String? {
+        return users[id]
+    }
+
+    // Returns the name, or ""Unknown"" if not found.
+    fun getNameOrDefault(id: Int): String {
+        return users[id] ?: ""Unknown""
+    }
+}",,0.000136,5,"Fully idiomatic with null safety (?:), expression bodies, val, and proper nullable return types."
+qwen/qwen3-coder,user_lookup,medium,3,True,True,1.48,256,106,"class UserRegistry {
+    private val users = mutableMapOf<Int, String>()
+
+    fun addUser(id: Int, name: String) {
+        users[id] = name
+    }
+
+    // Returns null if the user is not found.
+    fun getName(id: Int): String? {
+        return users[id]
+    }
+
+    // Returns the name, or ""Unknown"" if not found.
+    fun getNameOrDefault(id: Int): String {
+        return users[id] ?: ""Unknown""
+    }
+}",,0.000136,5,"Fully idiomatic with nullable return type, elvis operator for default, and concise expression bodies."
+qwen/qwen3-coder,order_filter,hard,1,False,False,1.07,307,114,"data class OrderBook {
+    data class Order(
+        val item: String,
+        val quantity: Int,
+        val price: Double
+    )
+
+    // Total value of all orders with quantity above the given threshold.
+    fun totalValueAbove(orders: List<Order>, minQuantity: Int): Double {
+        var total = 0.0
+        for (o in orders) {
+            if (o.quantity > minQuantity) {
+                total += o.price * o.quantity
+            }
+        }
+        return total
+    }
+}","/var/folders/ct/j63438g95h3614z9372z2vgh0000gn/T/tmptl6v9vr6/Snippet.kt:1:6: error: data class must have at least one primary constructor parameter.
+data class OrderBook {
+     ^^^^^^^^^^^^^^^
+",0.00015260000000000002,3,Uses data classes but retains Java-style manual loop with var accumulator instead of idiomatic functional operations like filter and sumOf.
+qwen/qwen3-coder,order_filter,hard,2,True,False,1.34,307,118,"import java.util.ArrayList
+import java.util.List
+
+class OrderBook {
+    data class Order(
+        val item: String,
+        val quantity: Int,
+        val price: Double
+    )
+
+    // Total value of all orders with quantity above the given threshold.
+    fun totalValueAbove(orders: List<Order>, minQuantity: Int): Double {
+        var total = 0.0
+        for (o in orders) {
+            if (o.quantity > minQuantity) {
+                total += o.price * o.quantity
+            }
+        }
+        return total
+    }
+}","COMPILE FAILED:
+/var/folders/ct/j63438g95h3614z9372z2vgh0000gn/T/tmp22dd56zp/TestSnippet.kt:32:39: error: argument type mismatch: actual type is 'kotlin.collections.List<OrderBook.Order>', but 'java.util.List<OrderBook.Order>' was expected.
+    val result = book.totalValueAbove(orders, 5)
+                                      ^^^^^^
+",0.0001558,2,Uses data class well but retains Java-style var accumulation and manual loop instead of idiomatic functional operations like filter and sumOf.
+qwen/qwen3-coder,order_filter,hard,3,True,False,1.02,307,118,"import java.util.ArrayList
+import java.util.List
+
+class OrderBook {
+    data class Order(
+        val item: String,
+        val quantity: Int,
+        val price: Double
+    )
+
+    // Total value of all orders with quantity above the given threshold.
+    fun totalValueAbove(orders: List<Order>, minQuantity: Int): Double {
+        var total = 0.0
+        for (order in orders) {
+            if (order.quantity > minQuantity) {
+                total += order.price * order.quantity
+            }
+        }
+        return total
+    }
+}","COMPILE FAILED:
+/var/folders/ct/j63438g95h3614z9372z2vgh0000gn/T/tmpwd5ry9f7/TestSnippet.kt:32:39: error: argument type mismatch: actual type is 'kotlin.collections.List<OrderBook.Order>', but 'java.util.List<OrderBook.Order>' was expected.
+    val result = book.totalValueAbove(orders, 5)
+                                      ^^^^^^
+",0.0001558,2,"Uses data class and val correctly, but relies on manual loop with var accumulator instead of idiomatic filter + sumOf, and imports java.util unnecessarily."

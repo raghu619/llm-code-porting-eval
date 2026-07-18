@@ -1,0 +1,5 @@
+model,pass_rate,avg_idiom,avg_seconds,avg_cost_usd,avg_output_tokens,aa_coding_score,predicted_rank
+claude-sonnet-4-5,1.0,4.6667,2.03,0.0021,85.2222,45,1
+gpt-5-mini,1.0,4.5556,8.3111,0.0015,734.0,39,2
+google/gemini-2.5-flash,1.0,4.2222,1.3344,0.0003,76.0,39,3
+qwen/qwen3-coder,0.6667,4.1111,1.4967,0.0001,86.8889,36,4
